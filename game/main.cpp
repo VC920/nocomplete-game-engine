@@ -1,20 +1,18 @@
-#include "Game.h"
-#include "Engine.h"
+#include "game.h"
+#include "engine.h"
 
 int main()
 {
-    // 初始化引擎和游戏
     Game* game = new Game();
-    eng::Engine& engine = eng::Engine::GetInstance();
+    Engine engine;
     engine.SetApplication(game);
 
-    // 运行引擎
-    if (engine.Init(1280, 720))
+    if (engine.Init())
     {
         engine.Run();
     }
 
-    // 退出引擎
     engine.Destroy();
+    delete game;
     return 0;
 }
